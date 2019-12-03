@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./Row.module.css";
 import { Cell } from "../Cell";
 
-const Row = ({ row }) => {
+const Row = ({ row, onCellClick }) => {
   return (
     <div className={styles.container}>
       {row.map(cell => (
-        <Cell value={cell} />
+        <Cell onClick={() => onCellClick(cell)} value={cell} />
       ))}
     </div>
   );
