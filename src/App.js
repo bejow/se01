@@ -15,7 +15,10 @@ import {
 import styles from "./App.module.css";
 
 function App() {
-  const [data, setData] = useState(defaultBoardBigEasyData);
+  const [data, setData] = useState(defaultBoardEasyData);
+  const [moves, setMoves] = useState(0);
+  const [games, setGames] = useState([]);
+  const [play, setPlay] = useState(true);
   const flatBoard = data.flat();
 
   const onCellClick = value => {
@@ -26,23 +29,40 @@ function App() {
         flatBoard.indexOf(value),
         nullNeighbor
       );
+      setMoves(moves + 1);
       setData(convertFlatData(newData));
     }
   };
 
   const finished = isWon(flatBoard);
+  const gameOver = games.length > 2;
+
+  if (finished) {
+    setGames([...games, moves]);
+    setMoves(0);
+    setData(defaultBoardEasyData);
+    setPlay(false);
+  }
 
   return (
     <div className={styles.App}>
-      {finished ? (
+      {gameOver ? (
+        <div>
+          <div>Game Over</div>
+          <div>Best try (moves): {Math.min(...games)}</div>
+        </div>
+      ) : !play ? (
         <div className={styles.winContainer}>
           <div>Congratulation you solved it</div>
-          <button onClick={() => setData(defaultBoardNormalData)}>
-            Restart
-          </button>
+          <button onClick={() => setPlay(true)}>Restart</button>
         </div>
       ) : (
-        <Board boardData={data} onCellClick={onCellClick} />
+        <div className={styles.winContainer}>
+          <Board boardData={data} onCellClick={onCellClick} />
+          <div>Moves {moves}</div>
+          <div>Game {games.length + 1}</div>
+          <div>Best try: {Math.min(...games)}</div>
+        </div>
       )}
     </div>
   );
