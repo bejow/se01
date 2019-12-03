@@ -6,12 +6,10 @@ const getNullNeighborIndex = (data, value) => {
 
   if (valueIndex + 1 === nullIndex && (valueIndex + 1) % boardSize !== 0) {
     // null is to the right
-    console.log("right");
     return valueIndex + 1;
   }
   if (valueIndex - 1 === nullIndex && valueIndex % boardSize !== 0) {
     // null is to the left
-    console.log("left");
     return valueIndex - 1;
   }
   if (
@@ -19,12 +17,10 @@ const getNullNeighborIndex = (data, value) => {
     valueIndex + boardSize <= heighestIndex
   ) {
     // null is at the bottom
-    console.log("bottom");
     return valueIndex + boardSize;
   }
   if (valueIndex - boardSize === nullIndex && valueIndex - boardSize >= 0) {
     // null is at the top
-    console.log("top");
     return valueIndex - boardSize;
   }
   return false;
