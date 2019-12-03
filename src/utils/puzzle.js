@@ -44,11 +44,18 @@ const calcBoardSize = data => {
 
 const isWon = data => {
   const filteredData = data.filter(value => value !== null); //remove null
-  const sortedCopy = [...filteredData].sort();
+  const sortedCopy = [...filteredData].sort(sortNumber);
+  console.log(data);
+  console.log("filtered", JSON.stringify(filteredData));
+  console.log("sorted", JSON.stringify(sortedCopy));
   if (JSON.stringify(filteredData) === JSON.stringify(sortedCopy)) {
     return true;
   }
   return false;
+};
+
+const sortNumber = (a, b) => {
+  return a - b;
 };
 
 const convertFlatData = data => {

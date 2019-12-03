@@ -3,7 +3,8 @@ import "./App.css";
 import { Board } from "./components/Board";
 import {
   defaultBoardNormalData,
-  defaultBoardEasyData
+  defaultBoardEasyData,
+  defaultBoardBigEasyData
 } from "./static/boardData";
 import {
   getNullNeighborIndex,
@@ -14,7 +15,7 @@ import {
 import styles from "./App.module.css";
 
 function App() {
-  const [data, setData] = useState(defaultBoardEasyData);
+  const [data, setData] = useState(defaultBoardBigEasyData);
   const flatBoard = data.flat();
 
   const onCellClick = value => {
