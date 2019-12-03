@@ -67,8 +67,8 @@ function App() {
       ) : (
         <div className={styles.winContainer}>
           <Board boardData={data} onCellClick={onCellClick} />
-          <div>Moves {moves}</div>
-          <div>Game {games.length + 1}</div>
+          <div>Moves: {moves}</div>
+          <div>Game: {games.length + 1}</div>
           <div>Best try: {Math.min(...games)}</div>
         </div>
       )}
