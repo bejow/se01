@@ -50,6 +50,14 @@ function App() {
         <div>
           <div>Game Over</div>
           <div>Best try (moves): {Math.min(...games)}</div>
+          <button
+            onClick={() => {
+              setGames([]);
+              setPlay(true);
+            }}
+          >
+            Restart Game
+          </button>
         </div>
       ) : !play ? (
         <div className={styles.winContainer}>
